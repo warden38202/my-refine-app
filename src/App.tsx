@@ -2,6 +2,8 @@
 import { Refine, WelcomePage } from '@refinedev/core';
 import { dataProvider } from './providers/data-provider';
 import { ShowProduct } from './pages/products/show';
+import { EditProduct } from './pages/products/edit';
+import { ListProucts } from './pages/products/list';
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
@@ -32,7 +34,9 @@ export default function App(): JSX.Element {
         Click on the Vite and React logos to learn more
       </p> */}
       {/* <WelcomePage/> */}
-      <ShowProduct/>
+      {/* <ShowProduct/> */}
+      {/* <EditProduct/> */}
+      <ListProucts/>
     </Refine>
   );
 }
