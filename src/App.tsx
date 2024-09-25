@@ -34,9 +34,9 @@ export default function App(): JSX.Element {
         Click on the Vite and React logos to learn more
       </p> */}
       {/* <WelcomePage/> */}
-      {/* <ShowProduct/> */}
+      <ShowProduct/>
       {/* <EditProduct/> */}
-      <ListProucts/>
+      {/* <ListProucts/> */}
     </Refine>
   );
 }

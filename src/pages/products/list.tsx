@@ -1,9 +1,12 @@
 import { useList } from "@refinedev/core";
 
 export const ListProucts = () => {
-    const {data, isLoading} = useList({resource:"products"});
-    console.log(data, "🛤🏕");
-    
+    const {data, isLoading} = useList({
+        resource:"products",
+        pagination: { current: 1, pageSize: 10 },
+        sorters:[{field: "name", order:"asc"}],
+        filters:[{field: "material", operator:"eq", value:"Alumium"}],
+    });
 
     if(isLoading) {
         return <div>Loading...</div>;
