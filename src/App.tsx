@@ -1,9 +1,16 @@
 // import { useState } from 'react';
-import { Refine, WelcomePage } from '@refinedev/core';
+import { Refine, Authenticated, WelcomePage } from '@refinedev/core';
 import { dataProvider } from './providers/data-provider';
+import { authProvider } from './providers/auth-provider';
+
 import { ShowProduct } from './pages/products/show';
 import { EditProduct } from './pages/products/edit';
-import { ListProucts } from './pages/products/list';
+import { ListProducts } from './pages/products/list';
+
+
+import {Login} from "./pages/login";
+import {Header} from "./components/header";
+
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
@@ -12,7 +19,12 @@ export default function App(): JSX.Element {
   // const [count, setCount] = useState(0)
 
   return (
-    <Refine dataProvider={dataProvider}>
+    <Refine 
+    dataProvider={dataProvider}
+    authProvider={authProvider}
+    >
+      <Authenticated key="protected" fallback={<Login />}>
+        <Header />
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -36,7 +48,8 @@ export default function App(): JSX.Element {
       {/* <WelcomePage/> */}
       {/* <ShowProduct/> */}
       {/* <EditProduct/> */}
-      <ListProucts/>
+         <ListProducts/>
+      </Authenticated>
     </Refine>
   );
 }
