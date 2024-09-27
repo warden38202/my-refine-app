@@ -1,4 +1,4 @@
-import { useOne, useUpdate } from "@refinedev/core";
+import { useOne, useUpdate, useForm, useSelect } from "@refinedev/core";
 
 export const EditProduct = () => {
     const { onFinish, mutation, query } = useForm({
@@ -7,7 +7,7 @@ export const EditProduct = () => {
       id: "123",
     });
   
-    const record = query.data?.data;
+    const record = query?.data?.data;
   
     const { options } = useSelect({
       resource: "categories",
@@ -16,7 +16,7 @@ export const EditProduct = () => {
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       // Using FormData to get the form values and convert it to an object.
-      const data = Object.fromEntries(new FormData(event.target).entries());
+      const data = Object.fromEntries(new FormData(event?.target).entries());
       // Calling onFinish to submit with the data we've collected from the form.
       onFinish({
         ...data,

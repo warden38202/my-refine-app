@@ -1,4 +1,4 @@
-import {useForm} from "@refinedev/core";
+import {useForm, useSelect} from "@refinedev/core";
 
 export const CreateProduct = () =>{
     const {onFinish, mutation} = useForm({
@@ -12,8 +12,9 @@ export const CreateProduct = () =>{
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) =>{
         event.preventDefault();
+        const form= event.target as HTMLFormElement;
 
-        const data = Object.fromEntries(new FormData(event.target).entries());
+        const data = Object.fromEntries(new FormData(form).entries());
 
         onFinish({
             ...data,
@@ -41,7 +42,7 @@ export const CreateProduct = () =>{
             
             <label htmlFor="category">Category</label>
             <select id="category" name="category">
-                {options?Map((option)=>(
+                {options?.map((option)=>(
                     <option key={option.value} value={option.value}>
                         {option.label}
                     </option>
